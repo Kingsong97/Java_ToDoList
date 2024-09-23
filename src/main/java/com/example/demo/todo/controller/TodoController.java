@@ -23,11 +23,11 @@ public class TodoController {
 
     // 2. 특정 ID 항목 조회 (Get 요청)
     @GetMapping("/{id}")
-    public Optional<Todo> getTodoById(@PathVariable Long id){
+    public Optional<Todo> getTodoById(@PathVariable("id") Long id){
         return toDoService.getTodoById(id);
     }
 
-    // 3. 새로운 ToDo 항목 추가 (Post 요청)
+    // 3. 새로운 항목 추가 (Post 요청)
     @PostMapping
     public Todo addNewTodo(@RequestBody Todo todo){
         return toDoService.addNewTodo(todo);
@@ -35,13 +35,13 @@ public class TodoController {
 
     // 4. 수정 (Put 요청)
     @PutMapping("/{id}")
-    public Todo updateTodo(@PathVariable Long id, @RequestBody Todo updatedTodo){
+    public Todo updateTodo(@PathVariable("id") Long id, @RequestBody Todo updatedTodo){
         return toDoService.updateTodo(id, updatedTodo);
     }
 
     // 5. 삭제 (Delete)
     @DeleteMapping("/{id}")
-    public void deleteTodoById(@PathVariable Long id){
+    public void deleteTodoById(@PathVariable("id") Long id){
         toDoService.deleteTodoById(id);
     }
 }
